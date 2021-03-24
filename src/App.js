@@ -10,6 +10,8 @@ class App extends React.Component {
       <div>
         <Header />
         <Main />
+        <h2>For the Button in You</h2>
+        <button>Here's your button</button>
         <Footer />
       </div>
     )
