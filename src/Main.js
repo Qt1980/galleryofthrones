@@ -11,11 +11,12 @@ class Main extends React.Component {
                 <HornedBeasts
                 name = {beasts.keyword}
                 title = {beasts.ttle}
-                image_Url = {beasts.image_Url}
+                image_url = {beasts.image_url}
                 description = {beasts.description}
                 />
-                )
-            })
+                );
+            });
+
             return (
                 <main>
                     {beastArray}
