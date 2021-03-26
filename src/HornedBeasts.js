@@ -1,14 +1,35 @@
-import { Button } from 'bootstrap';
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 
 class HornedBeasts extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+         numberOfClicks: 0
+        }
+    }
+
+    buttonClicked = () => {
+        this.setState({
+          numberOfClicks: this.state.numberOfClicks + 1
+     });
+    }
+
     render() {
         return (
-            <div>
-                <h2>{this.props.title}</h2>
-                <img src={this.props.image_url} alt={this.props.title} title={this.props.title}/>
-                <p>{this.props.description}</p>
-            </div>
+            <Card style={{ width: '30rem' }}>
+                <Card.Img variant="top" src={this.props.image_url} />
+                <Card.Body>
+                    <Card.Title>{this.props.title}</Card.Title>
+                    <Card.Text>
+                        {this.props.description}
+                        <div>😈{this.state.numberOfClicks}</div>
+                    </Card.Text>
+                    <Button onClick={this.buttonClicked} variant="secondary" size="lg block">My Favorite Horned Beast!</Button>
+                </Card.Body>
+            </Card>
         )
     }
 }
