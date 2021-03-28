@@ -15,24 +15,33 @@ class HornedBeasts extends React.Component {
         this.setState({
           numberOfClicks: this.state.numberOfClicks + 1
      });
+        this.props.handleClick({
+            title: this.props.title,
+            description: this.props.description,
+            image_url: this.props.image_url
+        })
     }
 
     render() {
+        // const {title, description, image_url} = this.props; - could change this.props.title to 'title' and same for image_url and description
         return (
             <Card style={{ width: '30rem' }}>
-                <Card.Img variant="top" src={this.props.image_url} />
+                <Card.Img onClick={this.buttonClicked} variant="top" src={this.props.image_url} />
                 <Card.Body>
                     <Card.Title>{this.props.title}</Card.Title>
                     <Card.Text>
                         {this.props.description}
-                        <div>😈{this.state.numberOfClicks}</div>
                     </Card.Text>
-                    <Button onClick={this.buttonClicked} variant="secondary" size="lg block">My Favorite Horned Beast!</Button>
+                    <Card.Text>
+                        😈{this.state.numberOfClicks}
+                    </Card.Text>
                 </Card.Body>
             </Card>
         )
     }
 }
 
+
 //testing site...
+
 export default HornedBeasts;
