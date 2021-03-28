@@ -23,6 +23,7 @@ class HornedBeasts extends React.Component {
     }
 
     render() {
+        // const {title, description, image_url} = this.props; - could change this.props.title to 'title' and same for image_url and description
         return (
             <Card style={{ width: '30rem' }}>
                 <Card.Img onClick={this.buttonClicked} variant="top" src={this.props.image_url} />
