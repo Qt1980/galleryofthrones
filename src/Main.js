@@ -3,21 +3,19 @@ import HornedBeasts from './HornedBeasts';
 import CardColumns from 'react-bootstrap/CardColumns'
 import './Main.css';
 
-import data from './data.json';
 
 class Main extends React.Component {
     render () {
-        let beastArray = [];
-        data.forEach((beasts) => {
-            beastArray.push(
-                <HornedBeasts
-                name = {beasts.keyword}
-                title = {beasts.ttle}
-                image_url = {beasts.image_url}
-                description = {beasts.description}
-                />
-                );
-            });
+        let beastArray = this.props.beasts.map((beast, index) => (
+            <HornedBeasts
+            name = {beast.keyword}
+            title = {beast.ttle}
+            image_url = {beast.image_url}
+            description = {beast.description}
+            key={index}
+            handleClick={this.props.handleClick}
+            />
+        ));
 
             return (
             <main>
