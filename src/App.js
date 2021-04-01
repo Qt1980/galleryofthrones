@@ -13,48 +13,60 @@ class App extends React.Component {
     super(props);
     this.state = {
       show: false,
-      // hornedBeasts: data
+      username: 'user',
+
       beast: {}
     }
-    // console.log("this is state========", this.state)
-  }
-
-  showBeastInModal = (clickedBeast) => {
-    this.setState({
-      show: true,
-      beast: clickedBeast,
-      
-    }) 
-    console.log(clickedBeast);
-  }
-
-  hideBeastInModal = () => {
-    this.setState({
-      show: false,
-    })
   }
 
 
-  render() {
-    console.log(this.state)
-    return (
-      <div>
-        <Header />
-        <Main 
-          beasts={data}
-          handleClick={this.showBeastInModal}
-        />
-        <SelectedBeast
-        show={this.state.show}
-        hideBeast={this.hideBeastInModal}
-        beast={this.state.beast}
-        />
-        
-        <Footer />
-      </div>
-    )
+    showBeastInModal = (clickedBeast) => {
+      this.setState({
+        show: true,
+        beast: clickedBeast,
+
+      })
+      console.log(clickedBeast);
+    }
+
+    hideBeastInModal = () => {
+      this.setState({
+        show: false,
+      })
+    }
+
+    handleFormSubmitted = e => {
+      e.preventDefault();
+      console.log('submitted');
+    }
+
+    handleNumHorns = e => {
+      this.setState ({
+        numHorns: e.target.value,
+      });
+    }
+
+
+    render() {
+      return (
+        <div>
+          <Header />
+          <Main
+            beasts={data}
+            handleClick={this.showBeastInModal}
+          />
+          
+          <SelectedBeast
+            show={this.state.show}
+            hideBeast={this.hideBeastInModal}
+            beast={this.state.beast}
+          />
+
+          <Footer />
+        </div>
+      )
+    };
   }
-}
 
 
-export default App;
+  export default App;
