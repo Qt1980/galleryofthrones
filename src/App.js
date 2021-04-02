@@ -13,12 +13,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       show: false,
-      username: 'user',
-
+      beastToRender: data,
       beast: {}
     }
   }
-
 
     showBeastInModal = (clickedBeast) => {
       this.setState({
@@ -26,7 +24,7 @@ class App extends React.Component {
         beast: clickedBeast,
 
       })
-      console.log(clickedBeast);
+      
     }
 
     hideBeastInModal = () => {
@@ -35,16 +33,17 @@ class App extends React.Component {
       })
     }
 
-    handleFormSubmitted = e => {
-      e.preventDefault();
-      console.log('submitted');
+    handleFormSubmitted = event => {
+      event.preventDefault();
+      const horns = parseInt(event.target.value);
+      console.log(horns);
+      let filteredBeastSubmitted = data.filter(beasts => beasts.horns === horns);
+      console.log(filteredBeastSubmitted);
+      this.setState({beastToRender: filteredBeastSubmitted})
+        //I need to attach horns somehow, not sure
+
     }
 
-    handleNumHorns = e => {
-      this.setState ({
-        numHorns: e.target.value,
-      });
-    }
 
 
     render() {
@@ -52,8 +51,9 @@ class App extends React.Component {
         <div>
           <Header />
           <Main
-            beasts={data}
+            beasts={this.state.beastToRender}
             handleClick={this.showBeastInModal}
+            handleFormSubmitted={this.handleFormSubmitted}
           />
           
           <SelectedBeast
