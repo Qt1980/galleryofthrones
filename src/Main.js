@@ -6,9 +6,11 @@ import { Form } from 'react-bootstrap';
 
 
 class Main extends React.Component {
+    //target form control to get selected number of horns
     filteredBeastArray = () => {
-        
+        // this.props.beast.filter
     }
+
     render () {
         let beastArray = this.props.beasts.map((beast, index) => (
             <HornedBeasts
@@ -26,11 +28,11 @@ class Main extends React.Component {
              <Form className="Form">
                  <Form.Group controlId="bootstrapName">
                      <Form.Label>Number of Horns</Form.Label>
-                     <Form.Control as="select">
-                     <option>1 Horn</option>
-                     <option>2 Horns</option>
-                     <option>3 horns</option>
-                     <option>4 Horns</option>
+                     <Form.Control onInput={this.props.handleFormSubmitted} as="select">
+                     <option value="1">1 Horn</option>
+                     <option value="2">2 Horns</option>
+                     <option value="3">3 horns</option>
+                     <option value="100">100 Horns</option>
                      </Form.Control>
                  </Form.Group>
              </Form>
